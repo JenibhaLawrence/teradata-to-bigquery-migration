@@ -1,0 +1,27 @@
+.LOGON <TERADATA_SERVER>/<USER>,<PASSWORD>;
+
+.EXPORT FILE=customer_orders_td.csv;
+
+WITH customer_enriched AS (
+    SELECT
+        c.customer_id,
+        c.customer_name,
+        o.order_id,
+        o.order_amount,
+        o.order_date,
+        SUM(o.order_amount) OVER (PARTITION BY c.customer_id) AS total_spend,
+        ROW_NUMBER() OVER (PARTITION BY c.customer_id ORDER BY o.order_date DESC) AS recent_order_rank
+    FROM customer_table c
+    JOIN orders_table o
+        ON c.customer_id = o.customer_id
+    WHERE o.order_date >= CURRENT_DATE - INTERVAL '30' DAY
+    AND c.status = 'ACTIVE'
+)
+SELECT *
+FROM customer_enriched
+WHERE recent_order_rank = 1;
+
+.EXPORT RESET;
+
+.LOGOFF;
+.QUIT;
