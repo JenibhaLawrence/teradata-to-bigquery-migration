@@ -1,0 +1,10 @@
+#Export from Teradata:
+bteq < sales_agg_teradata.sql > td_output.csv
+
+#Run BigQuery query:
+bq query --nouse_legacy_sql < sales_agg_bigquery.sql > bq_output.csv
+
+#Validation:
+python validate_td_bq.py td_output.csv bq_output.csv
+
+
