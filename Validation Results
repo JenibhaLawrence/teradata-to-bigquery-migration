@@ -1,15 +1,18 @@
-===== ADVANCED TERADATA–BIGQUERY VALIDATION =====
-
-⚠️ Aggregation mismatch in column: total_revenue
-⚠️ Mismatch rows saved to: row_mismatches.csv
-
-===== FINAL VALIDATION REPORT =====
-column_count_match: True
-row_count_match: True
-dtype_match: True
-primary_key_match: True
-hash_match: False
-aggregation_match: False
-final_score: 66.67
-
-❗ PARTIAL MATCH — CHECK ERRORS ABOVE
+===== COMPLEX MIGRATION VALIDATION REPORT =====
+Columns (TD vs BQ): 7 vs 7
+Rows (TD vs BQ): 14,520 vs 14,520
+-----------------------------------------------
+column_count_match: PASS
+row_count_match: PASS
+null_count_match_customer_id: PASS
+null_count_match_customer_name: PASS
+null_count_match_order_id: PASS
+null_count_match_order_amount: PASS
+null_count_match_order_date: PASS
+null_count_match_total_spend: PASS
+sum_match: PASS
+avg_match: PASS
+max_match: PASS
+-----------------------------------------------
+Overall Match Percentage: 100.00%
+================================================
