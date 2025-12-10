@@ -1,0 +1,15 @@
+===== ADVANCED TERADATA–BIGQUERY VALIDATION =====
+
+⚠️ Aggregation mismatch in column: total_revenue
+⚠️ Mismatch rows saved to: row_mismatches.csv
+
+===== FINAL VALIDATION REPORT =====
+column_count_match: True
+row_count_match: True
+dtype_match: True
+primary_key_match: True
+hash_match: False
+aggregation_match: False
+final_score: 66.67
+
+❗ PARTIAL MATCH — CHECK ERRORS ABOVE
